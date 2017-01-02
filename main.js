@@ -27,6 +27,7 @@ var gp16 = new Gamepiece('gp16', 'no', 'no', 'round', 'rabbit', 'img/rabbit_rd_f
 var arrayOfGamePieces = [gp1, gp2, gp3, gp4, gp5, gp6, gp7, gp8, gp9, gp10, gp11, gp12, gp13, gp14, gp15, gp16];
 
 var gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+var placedPieces = [{0:'', 1:'', 2:'', 3:''}, {4:'', 5:'', 6:'', 7:'' }, {8:'', 9:'', 10:'', 11:''}, {12:'', 13:'', 14:'', 15:''}]
 
 var selectedPiece = '';
 var selectedCell = 0;
@@ -46,7 +47,7 @@ loadGamePieces();
 function loadGameBoard() {
   for (var x = 0; x <gameBoard.length; x++) {
     $(".game-board").append("<div class='cell' id='" + gameBoard[x] + "'></div>" );
-    $("#" + gameBoard[x]).css({'width': '25%', 'padding-top': '25%', 'border': '2px solid grey', 'border-radius': '50%', 'box-sizing': 'border-box'})
+    $("#" + gameBoard[x]).css({'width': '25%', 'height': '90px', 'border': '2px solid grey', 'border-radius': '50%', 'box-sizing': 'border-box', 'display': 'flex', 'justify-content': 'center'})
   }
 }
 
@@ -75,11 +76,15 @@ function playTurn () {
 $('.game-piece').click(function(){
   selectedPiece = $('.game-piece').index(this);
   console.log(selectedPiece);
-  console.log(arrayOfGamePieces[selectedPiece].url);
+  console.log(arrayOfGamePieces[selectedPiece]);
+  $('#' + arrayOfGamePieces[selectedPiece].keyid).detach();
   $('.selected-piece').append("<img src='" + arrayOfGamePieces[selectedPiece].url + "' style='width:40px;'>'")
 })
 
 $('.cell').click(function(){
   selectedCell = $(this).attr('id');
   console.log(selectedCell);
+  $('.selected-piece img').detach();
+  $('#' + selectedCell).append("<img src='" + arrayOfGamePieces[selectedPiece].url + "' style='width:40px;'>'")
+
 })
