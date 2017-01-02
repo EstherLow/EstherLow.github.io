@@ -1,0 +1,30 @@
+#game-info-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.game-pieces {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  position: relative;
+  flex-direction: row;
+}
+
+.game-board {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  position: relative;
+  margin-left: 25%;
+  margin-right: 25%;
+  padding: 0;
+}
+
+.selected-piece {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  height: 60px;
+}
