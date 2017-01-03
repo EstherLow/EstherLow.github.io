@@ -74,17 +74,26 @@ function playTurn () {
 
 
 $('.game-piece').click(function(){
-  selectedPiece = $('.game-piece').index(this);
-  console.log(selectedPiece);
-  console.log(arrayOfGamePieces[selectedPiece]);
-  $('#' + arrayOfGamePieces[selectedPiece].keyid).detach();
-  $('.selected-piece').append("<img src='" + arrayOfGamePieces[selectedPiece].url + "' style='width:40px;'>'")
+  selectedPiece = $(this).attr('id')
+  var selected = $('#' + selectedPiece).contents();
+  selected.detach();
+  $('.selected-piece').append(selected)
+  $('.selected-piece').css({'width': '50px', 'margin-left': '20px'})
 })
 
 $('.cell').click(function(){
   selectedCell = $(this).attr('id');
   console.log(selectedCell);
-  $('.selected-piece img').detach();
-  $('#' + selectedCell).append("<img src='" + arrayOfGamePieces[selectedPiece].url + "' style='width:40px;'>'")
+  var placed = $('.selected-piece').contents()
+  if ($("#"+selectedCell).children().length > 0) {
+    $('.overlay-msg').css("visibility", "visible")
+  } else {
+    placed.detach();
+    $('#' + selectedCell).append(placed)
+  }
 
+})
+
+$("#dismissed").click(function(){
+  $(".overlay-msg").css('visibility', 'hidden')
 })
