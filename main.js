@@ -27,17 +27,18 @@ var gp16 = new Gamepiece('gp16', 'no', 'no', 'round', 'rabbit', 'img/rabbit_rd_f
 var arrayOfGamePieces = [gp1, gp2, gp3, gp4, gp5, gp6, gp7, gp8, gp9, gp10, gp11, gp12, gp13, gp14, gp15, gp16];
 
 var gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-var placedPieces = [{0:'', 1:'', 2:'', 3:''}, {4:'', 5:'', 6:'', 7:'' }, {8:'', 9:'', 10:'', 11:''}, {12:'', 13:'', 14:'', 15:''}]
+var placedPieces = {0:0, 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0 , 8:0, 9:0, 10:0, 11:0, 12:0, 13:0, 14:0, 15:0}
 
 var selectedPiece = '';
 var selectedCell = 0;
 var activePlayer = 1;
+var isGameOver = 0;
 
 
 function loadGamePieces () {
 for (var i = 0; i < arrayOfGamePieces.length; i++) {
   $('.game-pieces').append("<div class='game-piece' id='" + arrayOfGamePieces[i].keyid + "'></div>")
-  $("#" + arrayOfGamePieces[i].keyid).css({'width': '40px'})
+  $("#" + arrayOfGamePieces[i].keyid).css({'width': '60px'})
   $("#" + arrayOfGamePieces[i].keyid).prepend("<img src='" + arrayOfGamePieces[i].url + "' id='" + arrayOfGamePieces[i].keyid + "' style='width: 100%;'>")
 }
 }
@@ -54,13 +55,22 @@ function loadGameBoard() {
 loadGameBoard()
 
 function playTurn () {
-// if activePlayer is 1
-// prompt 'Player 2, please select token for Player 1.'
-// else promt 'Player 1, please select token for Player 2.'
+  if (activePlayer === 1) {
+    $(".instructions").append("<h3>Player 2, please select token for Player 1.</h3>")
+  } else
+  { $(".instructions").append("<h3>Player 1, please select token for Player 2.</h3>")
+  }
 }
 
 
-//function winByRows() {}
+function winByRows() {
+if (placedPieces[0] && placedPieces[1] && placedPieces[2] && placedPieces[3] !== 0) {
+  console.log("is not empty");
+  // for (var )
+  }
+ }
+
+
 //if (win by row 1) || (win by row 2) || (win by row 3) \\ (win by row 4) {
 // declare winner
 // declare gameOver
@@ -76,9 +86,12 @@ function playTurn () {
 $('.game-piece').click(function(){
   selectedPiece = $(this).attr('id')
   var selected = $('#' + selectedPiece).contents();
+  console.log(selectedPiece);
+  console.log(selected);
   selected.detach();
   $('.selected-piece').append(selected)
   $('.selected-piece').css({'width': '50px', 'margin-left': '20px'})
+  $(".instructions h3").detach();
 })
 
 $('.cell').click(function(){
@@ -89,9 +102,14 @@ $('.cell').click(function(){
     $('.overlay-msg').css("visibility", "visible")
   } else {
     placed.detach();
-    $('#' + selectedCell).append(placed)
+    $('#' + selectedCell).append(placed);
   }
-
+  placedPieces[selectedCell] = window[selectedPiece];
+  winByRows()
+  console.log(placedPieces);
+  if(activePlayer === 1) { activePlayer = 2 } else { activePlayer = 1}
+  console.log('active player ' + activePlayer);
+  playTurn()
 })
 
 $("#dismissed").click(function(){

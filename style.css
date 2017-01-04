@@ -9,6 +9,8 @@
   align-items: baseline;
   position: relative;
   flex-direction: row;
+  width: 520px;
+  justify-content: space-between;
 }
 
 .game-board {
