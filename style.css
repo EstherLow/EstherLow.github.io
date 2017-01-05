@@ -1,41 +1,73 @@
+body {
+  background-image: url(img/subtle_stripes.png);
+}
+
 .introduction {
-  margin-left: 20px;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size: 18px;
+  background-color: white;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  padding: 40px 40px 40px 40px;
+  box-sizing: border-box;
+}
+
+.start-game {
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 25px;
+  text-align: center;
 }
 
 #game-info-wrapper {
   display: flex;
   flex-direction: column;
-  margin-left: 20px;
+  margin-left: 15%;
+  margin-top: 30px;
+  width: 70%;
+
+}
+
+.instructions {
+  width: 100%;
+  margin-left: calc((100% - 320px)/2)
 }
 
 .game-pieces {
+  float: left;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   position: relative;
   flex-direction: row;
-  width: 520px;
+  width: 330px;
   justify-content: space-between;
+  margin-left: calc((100% - 320px)/2)
+}
+
+.selected-display {
+  float: left;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 350px;
+  height: 100px;
+  margin-left: calc((100% - 320px)/2)
 }
 
 .game-board {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  width: 400px;
+  width: 320px;
   position: relative;
-  margin-left: calc((100% - 400px)/2);
-  margin-right: calc((100% - 400px)/2);
+  margin-left: calc((100% - 320px)/2);
+  margin-right: calc((100% - 320px)/2);
   padding: 0;
 }
 
-.selected-display {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  width: 100%;
-  height: 100px;
-}
 
 .overlay-msg {
   position: fixed;
@@ -48,11 +80,30 @@
   background-color: white;
   text-align: center;
 }
+.game-board-container {
+  display: flex;
+  flex-direction: column;
+}
 
 .game-over {
   position: absolute;
+  width: 300px;
+  height: 200px;
+  margin: 0 0 0 200px;
   visibility: hidden;
-  width: 100%;
-  background-color: grey;
+  border: 2px solid grey;
+  background-color: white;
   z-index: 1000;
+  text-align: center;
+}
+
+.restart, #start-over {
+  width: 150px;
+  height: 40px;
+  font-size: 18px;
+}
+
+#startover {
+  margin-top: 20px;
+  margin-left: calc((100% - 100px)/2);
 }
