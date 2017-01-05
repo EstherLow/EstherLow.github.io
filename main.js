@@ -81,7 +81,7 @@ function compareCells ([c1, c2, c3, c4], y) {
       winner = activePlayer;
       isGameOver = true;
       console.log(isGameOver);
-      $('.game-over').prepend('<h1>Game Over!</h1><h4>Winner is Player ' + activePlayer + '</h4>');
+      $('.game-over').prepend('<h3>Game Over!</h3><h4>Winner is Player ' + activePlayer + '</h4>');
       $('.game-over').css("visibility", 'visible')
     }
     if (gameBoard.every(isObject) === true) {
