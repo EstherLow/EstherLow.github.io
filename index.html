@@ -6,11 +6,16 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id='title'><h1>Welcome to modified quarto!</h1>
-  <p>This game is a modified version of the award-winning board game, Quarto. Quarto was invented Swiss mathematician Blaise Müller.  It is a two player game, and the player who places a piece on the board that forms a horizontal, vertical, or diagonal row of four pieces, all of which have a common attribute wins. </p>
-  <p>In this modified version, the rules of the game is the same. Each game piece has 4 attributes, and are unique.  The four attributes are: </p>
-  <ul><li>shape: round or square</li><li>ears: yes or no</li><li>borders: yes or no</li><li>animal type: rabbit or panda</li> </ul>
+  <div class='introduction'><h1>Welcome to modified quarto!</h1>
+  <p>This game is a modified version of the award-winning board game, Quarto, invented by Swiss mathematician, Blaise Müller. </p>
+
+  <div class='introduction' id='how-to-play'><h3>How to play: </h3>
+  <p> Two players will take turns to place a token chosen by the opponent on the board. The first player who completes a horizontal, vertical or diagonal row of four pieces, all of which has at least one common attribute, wins.</p>
+  <p> There are altogether 16 game pieces, each piece has four attributes:</p>
+    <ul><li>shape: round or square</li><li>ears: yes or no</li><li>borders: yes or no</li><li>animal type: rabbit or panda</li> </ul>
   </div>
+  </div>
+
   <div id='game-info-wrapper'>
     <div class='instructions'><h3>Player 2, please select token for Player 1</h3></div>
     <div class='game-pieces'></div>
@@ -19,8 +24,10 @@
       <div class='selected-piece'></div>
   </div>
   </div>
-  <div class='game-board'></div>
-  <div id='buttons'></div>
+  <div class='game-board'>
+    <div class='game-over'></div>
+  </div>
+  <div><button id='restart'>Play again!</button></div>
   <div class='overlay-msg'><p>Please select an empty cell.</p><button id='dismissed'>Ok!</button></div>
   <script
   src="https://code.jquery.com/jquery-3.1.1.min.js"

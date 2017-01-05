@@ -1,6 +1,11 @@
+.introduction {
+  margin-left: 20px;
+}
+
 #game-info-wrapper {
   display: flex;
   flex-direction: column;
+  margin-left: 20px;
 }
 
 .game-pieces {
@@ -17,10 +22,10 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  width: 50%;
+  width: 400px;
   position: relative;
-  margin-left: 25%;
-  margin-right: 25%;
+  margin-left: calc((100% - 400px)/2);
+  margin-right: calc((100% - 400px)/2);
   padding: 0;
 }
 
@@ -42,4 +47,12 @@
   z-index: 1000;
   background-color: white;
   text-align: center;
+}
+
+.game-over {
+  position: absolute;
+  visibility: hidden;
+  width: 100%;
+  background-color: grey;
+  z-index: 1000;
 }
