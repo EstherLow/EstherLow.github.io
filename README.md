@@ -1,10 +1,13 @@
-# Your Project Name
+# Modified Quarto
 
-This is the starter code for WDI projects. Please update this README file with information specific to your project. Replace this paragraph for instance, with a short description of your project. Then update the sections below. Refer to your project specificaion for instructions on how to submit your projects.
+Quarto is a board game for two players invented by Swiss mathematician Blaise Müller in 1991.  It is played on a 4×4 board.There are 16 unique pieces, players take turns choosing a piece which the other player must then place on the board. A player wins by placing a piece on the board which forms a horizontal, vertical, or diagonal row of four pieces, all of which have a common attribute.
+
+In my version of this game, I have changed the tokens used for the game pieces, but all else remains the same.
+
 
 ## Getting Started
 
-Provide instructions here about how to get your project running on our local machine. Do we just need to clone and open a certain file or do we need to install anything first.
+To get started simply clone the project folder and open index.html with your browser.
 
 ### Prerequisites
 
@@ -62,4 +65,3 @@ Did you collaborate with others on this project, list them here
 ## Acknowledgments
 
 * Hat tip to anyone who's code was used, for example [this was a useful starting point for creating this template](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2).
-

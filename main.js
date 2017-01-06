@@ -61,7 +61,7 @@ function loadGameBoard() {
 
 
 function playTurn () {
-  if (isGameOver === true) { $('.cell').unbind('click') }
+  if (isGameOver === true) { return false; }
 
   else if (activePlayer === 1) {
     $(".instructions").append("<h2>Player 2, please select token for Player 1.</h2>")
@@ -81,13 +81,13 @@ function compareCells ([c1, c2, c3, c4], y) {
       winner = activePlayer;
       isGameOver = true;
       console.log(isGameOver);
-      $('.game-over').prepend('<h3>Game Over!</h3><h4>Winner is Player ' + activePlayer + '</h4>');
+      $('.game-over').prepend('<h3>Game Over!Winner is Player ' + activePlayer + '</h3>');
       $('.game-over').css("visibility", 'visible')
     }
     if (gameBoard.every(isObject) === true) {
       console.log(gameBoard.every(isObject));
       winner = 3;
-      $('.game-over').prepend("<h1>Game Over!</h1><h4>It's a draw!</h4>");
+      $('.game-over').prepend("<h3>Game Over!It's a draw!</h3>");
       $('.game-over').css("visibility", 'visible')
     } else {
       winner = 0;

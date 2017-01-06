@@ -47,6 +47,13 @@ body {
   margin-left: calc((100% - 320px)/2)
 }
 
+.game-piece {
+  max-width: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  max-height: 40px;
+}
+
 .selected-display {
   float: left;
   display: flex;
@@ -87,14 +94,15 @@ body {
 
 .game-over {
   position: absolute;
-  width: 300px;
-  height: 150px;
+  width: 350px;
+  height: 40px;
   margin: -100px 0 0 220px;
   visibility: hidden;
   border: 2px solid grey;
   background-color: white;
   z-index: 1000;
   text-align: center;
+  overflow: hidden;
 }
 
 .restart, #start-over {
