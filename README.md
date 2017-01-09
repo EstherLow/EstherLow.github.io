@@ -11,57 +11,28 @@ To get started simply clone the project folder and open index.html with your bro
 
 ### Prerequisites
 
-What is needed to install and run the project, how do we install them
-
-```
-Code example
-```
+There are no installations needed.
 
 ### How to Use
 
-A step by step guide on how to install and use the project, for example if this is a game, how do we play it.
+Click on token to select.
+Click on cell to place token.
 
-
-```
-Code example
-```
-
-More steps...
-
-```
-until finished
-```
-
-
-## Tests
-
-Did you write automated tests? If so, how do we run them.
-
-
-```
-Code example
-```
 
 ## Live Version
 
-Where is this deployed online (github pages, heroku etc), give us the link and any access details we need.
+
 
 ## Built With
 
-What did you use to build it, list the technologies, plugins, gems, packages etc.
 
-* [jQuery](http://jquery.com/) - jQuery for example is something you likely used
 
-## Workflow
+* [jQuery](http://jquery.com/)
 
-Did you write user stories, draw wireframes, use task tracking, produce ERDs? Did you use source control, with regular commits? Include links to them here.
-
-## Authors
-
-Did you collaborate with others on this project, list them here
 
 * **John McClain** - *Responsible for keeping vests white* - [GithubUserName](https://github.com/GithubUserName)
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used, for example [this was a useful starting point for creating this template](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2).
+* The tokens used in this project was taken from
+http://kenney.nl/assets

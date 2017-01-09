@@ -150,10 +150,15 @@ $('.game-piece').click(function () {
   var selected = $('#' + selectedPiece).contents();
   console.log(selectedPiece);
   console.log(selected);
+  if ($('.selected-piece').children().length !== 0) {
+    $('.overlay-msg p').html("Token is already selected.");
+    $('.overlay-msg').css("visibility", "visible");
+  } else {
   selected.detach();
   $('.selected-piece').append(selected)
   $('.selected-piece').css({'width': '50px', 'margin-left': '20px'})
   $(".instructions h2").detach();
+}
 })
 
 $('.cell').click(function(){
