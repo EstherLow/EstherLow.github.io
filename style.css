@@ -21,6 +21,10 @@ body {
   text-align: center;
 }
 
+#game-container {
+  display: inline-flex;
+}
+
 #game-info-wrapper {
   display: flex;
   flex-direction: column;
@@ -32,19 +36,18 @@ body {
 
 .instructions {
   width: 100%;
-  margin-left: calc((100% - 320px)/2)
+  margin-left: calc((100% - 420px) / 2);
 }
 
 .game-pieces {
-  float: left;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   position: relative;
   flex-direction: row;
-  width: 330px;
+  width: 100px;
   justify-content: space-between;
-  margin-left: calc((100% - 320px)/2)
+
 }
 
 .game-piece {
@@ -70,8 +73,7 @@ body {
   flex-direction: row;
   width: 320px;
   position: relative;
-  margin-left: calc((100% - 320px)/2);
-  margin-right: calc((100% - 320px)/2);
+  margin-right: calc((100% - 420px)/2);
   padding: 0;
 }
 
@@ -95,8 +97,8 @@ body {
 .game-over {
   position: absolute;
   width: 350px;
-  height: 40px;
-  margin: -100px 0 0 220px;
+  height: 100px;
+  margin: -100px 0 0 320px;
   visibility: hidden;
   border: 2px solid grey;
   background-color: white;

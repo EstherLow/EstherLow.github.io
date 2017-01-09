@@ -1,3 +1,5 @@
+/* global $ */
+
 function Gamepiece(keyid, border, ears, shape, animal, url) {
   this.keyid = keyid;
   this.border = border;
@@ -72,24 +74,31 @@ function playTurn () {
 }
 function isObject (arr) {
   return typeof arr === 'object'
-  }
+}
 
 
-function compareCells ([c1, c2, c3, c4], y) {
+function compareCells ([c1, c2, c3, c4]) {
   if ((typeof c1 === "object") && (typeof c2 === "object") && (typeof c3 === "object") && (typeof c4 === "object")) {
-    if ((typeof c1 === 'object') && (c1[y] === c2[y]) && (c2[y] === c3[y]) && (c3[y] === c4[y])) {
+    if ((typeof c1 === 'object') &&
+        ((c1['border'] === c2['border']) && (c2['border'] === c3['border']) && (c3['border'] === c4['border']) ||
+        (c1['animal'] === c2['animal']) && (c2['animal'] === c3['animal']) && (c3['animal'] === c4['animal']) ||
+        (c1['ears'] === c2['ears']) && (c2['ears'] === c3['ears']) && (c3['ears'] === c4['ears']) ||
+        (c1['shape'] === c2['shape']) && (c2['shape'] === c3['shape']) && (c3['shape'] === c4['shape']))) {
       winner = activePlayer;
       isGameOver = true;
       console.log(isGameOver);
+      console.log('Player ' + activePlayer + ' won.');
       $('.game-over').prepend('<h3>Game Over!Winner is Player ' + activePlayer + '</h3>');
       $('.game-over').css("visibility", 'visible')
     }
     if (gameBoard.every(isObject) === true) {
-      console.log(gameBoard.every(isObject));
       winner = 3;
-      $('.game-over').prepend("<h3>Game Over!It's a draw!</h3>");
-      $('.game-over').css("visibility", 'visible')
+      console.log('Draw');
+      //console.log(gameBoard.every(isObject));
+      //$('.game-over').prepend("<h3>Game Over!It's a draw!</h3>");
+      //$('.game-over').css("visibility", 'visible')
     } else {
+      console.log('not game over.');
       winner = 0;
       isGameOver = false;
     }
@@ -136,7 +145,7 @@ $('.start-game').click(function (){
   })
 
 
-$('.game-piece').click(function(){
+$('.game-piece').click(function () {
   selectedPiece = $(this).attr('id')
   var selected = $('#' + selectedPiece).contents();
   console.log(selectedPiece);
@@ -166,18 +175,9 @@ $('.cell').click(function(){
 
     gameBoard[selectedCell] = window[selectedPiece];
     mapCells();
-    compareCells(row, 'animal');
-    compareCells(column,'animal');
-    compareCells(diagonal, 'animal');
-    compareCells(row, 'shape');
-    compareCells(column,'shape');
-    compareCells(diagonal, 'shape');
-    compareCells(row, 'border');
-    compareCells(column,'border')
-    compareCells(diagonal, 'border')
-    compareCells(row, 'ears');
-    compareCells(column,'ears')
-    compareCells(diagonal, 'ears')
+    compareCells(row);
+    compareCells(column);
+    if (selectedCell === 0 || 3 || 5 || 6 || 10 || 9 || 12 || 15) { compareCells(diagonal);}
 
     if(activePlayer === 1) { activePlayer = 2 } else { activePlayer = 1}
 

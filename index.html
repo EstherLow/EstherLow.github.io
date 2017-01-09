@@ -22,19 +22,19 @@
     <p> When you are ready, press 'start game' to begin</p>
     <div><button class='start-game'> Start Game </button></div>
   </div>
-
+<div id='game-container'>
   <div id='game-info-wrapper'>
     <div class='instructions'></div>
     <div class='game-pieces'></div>
-    <div class='selected-display'><div class='selected-piece'></div></div>
   </div>
   <div class='game-board-container'>
-  <div class='game-board'>
+    <div class='selected-display'><div class='selected-piece'></div></div>
+    <div class='game-board'>
+    </div>
+    <div class='game-over'><button id='play-again'>Play again!</button></div>
+    <div class='restart'><button id='start-over'>Start Over</button></div>
   </div>
-  <div class='game-over'><button id='play-again'>Play again!</button></div>
-  <div class='restart'><button id='start-over'>Start Over</button></div>
-  <div>
-
+</div>
   <div class='overlay-msg'><p>Please select an empty cell.</p><button id='dismissed'>Ok!</button></div>
   <script
   src="https://code.jquery.com/jquery-3.1.1.min.js"
