@@ -1,30 +1,35 @@
 /* global $ */
 
-function Gamepiece(keyid, border, ears, shape, animal, url) {
+
+// constructor for gamepiece
+function Gamepiece(keyid, border, ears, shape, animal, url, borderradius) {
   this.keyid = keyid;
   this.border = border;
   this.ears = ears;
   this.shape = shape;
   this.animal = animal;
   this.url = url;
+  this.borderradius = borderradius
 }
 
-var gp1 = new Gamepiece('gp1', 'yes', 'yes', 'square', 'panda', 'img/panda-sq-outline.png');
-var gp2 = new Gamepiece('gp2', 'no', 'yes', 'square', 'panda', 'img/panda_sq.png');
-var gp3 = new Gamepiece('gp3', 'yes', 'no', 'square', 'panda', 'img/panda_sq_formless_outline.png');
-var gp4 = new Gamepiece('gp4', 'no', 'no', 'square', 'panda', 'img/panda_sq_formless.png');
-var gp5 = new Gamepiece('gp5', 'yes', 'yes', 'round', 'panda', 'img/panda_rd_outline.png');
-var gp6 = new Gamepiece('gp6', 'no', 'yes', 'round', 'panda', 'img/panda_rd.png');
-var gp7 = new Gamepiece('gp7', 'yes', 'no', 'round', 'panda', 'img/panda_rd_formless_outline.png');
-var gp8 = new Gamepiece('gp8', 'no', 'no', 'round', 'panda', 'img/panda_rd_formless.png');
-var gp9 = new Gamepiece('gp9', 'yes', 'yes', 'square', 'rabbit', 'img/rabbit_sq_outline.png');
-var gp10 = new Gamepiece('gp10', 'no', 'yes', 'square', 'rabbit', 'img/rabbit_sq.png');
-var gp11 = new Gamepiece('gp11', 'yes', 'no', 'square', 'rabbit', 'img/rabbit_sq_formless_outline.png');
-var gp12 = new Gamepiece('gp12', 'no', 'no', 'square', 'rabbit', 'img/rabbit_sq_formless.png');
-var gp13 = new Gamepiece('gp13', 'yes', 'yes', 'round', 'rabbit', 'img/rabbit_rd_outline.png');
-var gp14 = new Gamepiece('gp14', 'no', 'yes', 'round', 'rabbit', 'img/rabbit_rd.png');
-var gp15 = new Gamepiece('gp15', 'yes', 'no', 'round', 'rabbit', 'img/rabbit_rd_formless_outline.png');
-var gp16 = new Gamepiece('gp16', 'no', 'no', 'round', 'rabbit', 'img/rabbit_rd_formless.png');
+// tokens
+var gp1 = new Gamepiece('gp1', 'yes', 'yes', 'square', 'panda', 'img/panda-sq-outline.png', '5px');
+var gp2 = new Gamepiece('gp2', 'no', 'yes', 'square', 'panda', 'img/panda_sq.png', '5px');
+var gp3 = new Gamepiece('gp3', 'yes', 'no', 'square', 'panda', 'img/panda_sq_formless_outline.png', '5px');
+var gp4 = new Gamepiece('gp4', 'no', 'no', 'square', 'panda', 'img/panda_sq_formless.png', '5px');
+var gp5 = new Gamepiece('gp5', 'yes', 'yes', 'round', 'panda', 'img/panda_rd_outline.png', '35%');
+var gp6 = new Gamepiece('gp6', 'no', 'yes', 'round', 'panda', 'img/panda_rd.png', '35%');
+var gp7 = new Gamepiece('gp7', 'yes', 'no', 'round', 'panda', 'img/panda_rd_formless_outline.png', '35%');
+var gp8 = new Gamepiece('gp8', 'no', 'no', 'round', 'panda', 'img/panda_rd_formless.png', '35%');
+var gp9 = new Gamepiece('gp9', 'yes', 'yes', 'square', 'rabbit', 'img/rabbit_sq_outline.png', '5px');
+var gp10 = new Gamepiece('gp10', 'no', 'yes', 'square', 'rabbit', 'img/rabbit_sq.png', '5px');
+var gp11 = new Gamepiece('gp11', 'yes', 'no', 'square', 'rabbit', 'img/rabbit_sq_formless_outline.png', '5px');
+var gp12 = new Gamepiece('gp12', 'no', 'no', 'square', 'rabbit', 'img/rabbit_sq_formless.png', '5px');
+var gp13 = new Gamepiece('gp13', 'yes', 'yes', 'round', 'rabbit', 'img/rabbit_rd_outline.png', '35%');
+var gp14 = new Gamepiece('gp14', 'no', 'yes', 'round', 'rabbit', 'img/rabbit_rd.png', '35%');
+var gp15 = new Gamepiece('gp15', 'yes', 'no', 'round', 'rabbit', 'img/rabbit_rd_formless_outline.png', '35%');
+var gp16 = new Gamepiece('gp16', 'no', 'no', 'round', 'rabbit', 'img/rabbit_rd_formless.png', '35%');
+
 
 var arrayOfGamePieces = [gp1, gp2, gp3, gp4, gp5, gp6, gp7, gp8, gp9, gp10, gp11, gp12, gp13, gp14, gp15, gp16];
 
@@ -41,12 +46,10 @@ var column = [];
 var diagonal = [];
 
 function loadGamePieces () {
-  $('.instructions').prepend('<h2>Player 2, please select token for Player 1</h2>');
-  $('.selected-display').prepend('<h2>The selected piece is: </h2>');
+  $('#instructions').prepend('<div class="instructions"> <h5><strong>To begin:</strong> Player 2, please select token for Player 1</h5></div>');
   for (var i = 0; i < arrayOfGamePieces.length; i++) {
-    $('.game-pieces').append("<div class='game-piece' id='" + arrayOfGamePieces[i].keyid + "'></div>")
-    $("#" + arrayOfGamePieces[i].keyid).css({'width': '40px'});
-    $("#" + arrayOfGamePieces[i].keyid).prepend("<img src ='" + arrayOfGamePieces[i].url + "' id='" + arrayOfGamePieces[i].keyid + "' style='width: 40px;'>");
+      $('#game-pieces').append("<div class='game-piece col-sm-4' id='" + arrayOfGamePieces[i].keyid + "' style='margin-bottom: 10px'></div>")
+      $("#" + arrayOfGamePieces[i].keyid).prepend("<img src ='" + arrayOfGamePieces[i].url + "' id='" + arrayOfGamePieces[i].keyid + "' style='width: 50px; box-shadow: 5px 5px 3px grey; border-radius:" + arrayOfGamePieces[i].borderradius + "; z-index: 50'>")
   }
 }
 
@@ -54,8 +57,8 @@ function loadGamePieces () {
 
 function loadGameBoard() {
   for (var x = 0; x <gameBoard.length; x++) {
-    $(".game-board").append("<div class='cell' id='" + gameBoard[x] + "'></div>");
-    $("#" + gameBoard[x]).css({'width': '80px', 'height': '80px', 'border': '2px solid grey', 'border-radius': '50%', 'box-sizing': 'border-box', 'display': 'flex', 'justify-content': 'center'})
+    $("#game-board").append("<div class='cell d-inline-block' id='" + gameBoard[x] + "'></div>");
+    $("#" + gameBoard[x]).css({'width': '80px', 'position': 'relative', 'height': '80px', 'border': '2px solid grey', 'border-radius': '50%', 'box-sizing': 'border-box'})
   }
   $('#start-over').css('visibility', 'visible');
 }
@@ -66,10 +69,10 @@ function playTurn () {
   if (isGameOver === true) { return false; }
 
   else if (activePlayer === 1) {
-    $(".instructions").append("<h2>Player 2, please select token for Player 1.</h2>")
+    $(".instructions").replaceWith("<h4>Player 2, please select token for Player 1.</h4>")
   }
   else if (activePlayer === 2) {
-    $(".instructions").append("<h2>Player 1, please select token for Player 2.</h2>")
+    $(".instructions").replaceWith("<h4>Player 1, please select token for Player 2.</h4>")
   }
 }
 function isObject (arr) {
@@ -88,15 +91,15 @@ function compareCells ([c1, c2, c3, c4]) {
       isGameOver = true;
       console.log(isGameOver);
       console.log('Player ' + activePlayer + ' won.');
-      $('.game-over').prepend('<h3>Game Over!Winner is Player ' + activePlayer + '</h3>');
-      $('.game-over').css("visibility", 'visible')
+      $('#game-over').prepend('<h3>Game Over!Winner is Player ' + activePlayer + '</h3>');
+      $('#game-over').css({"visibility":'visible'})
     }
     if (gameBoard.every(isObject) === true) {
       winner = 3;
       console.log('Draw');
       //console.log(gameBoard.every(isObject));
-      //$('.game-over').prepend("<h3>Game Over!It's a draw!</h3>");
-      //$('.game-over').css("visibility", 'visible')
+      //$('#game-over').prepend("<h3>Game Over!It's a draw!</h3>");
+      //$('#game-over').css("visibility", 'visible')
     } else {
       console.log('not game over.');
       winner = 0;
@@ -140,19 +143,19 @@ function mapCells() {
 loadGameBoard();
 loadGamePieces()
 
-$('.start-game').click(function (){
-  $('.introduction').css('display', 'none');
-  })
+// $('#show-instructions').click(function (){
+//   $('#game-info').toggle();
+//   })
 
 
 $('.game-piece').click(function () {
   selectedPiece = $(this).attr('id')
   var selected = $('#' + selectedPiece).contents();
-  console.log(selectedPiece);
-  console.log(selected);
+  // console.log(selectedPiece);
+  // console.log(selected);
   if ($('.selected-piece').children().length !== 0) {
-    $('.overlay-msg p').html("Token is already selected.");
-    $('.overlay-msg').css("visibility", "visible");
+    $('.overlay-msg p').html("Illegal Move: Please place selected token.");
+    $('.overlay-msg').css({"visibility":"visible", 'z-index': '100', 'margin-top': '100px', 'position':'relative'});
   } else {
   selected.detach();
   $('.selected-piece').append(selected)
@@ -162,17 +165,20 @@ $('.game-piece').click(function () {
 })
 
 $('.cell').click(function(){
+
+  // checks if user has selected a token
   selectedCell = $(this).attr('id');
   if ($('.selected-piece').children().length === 0) {
-    $('.overlay-msg p').html("Please select a token first.");
-    $('.overlay-msg').css("visibility", "visible");
+    $('#overlay-msg p').html("Illegal Move: Please select a token first.");
+    $('#overlay-msg').css({"visibility":"visible", 'z-index': '100', 'margin-top': '100px', 'position':'absolute'});
     return;
   }
 
+  // checks if cell user clicks on is empty
   var placed = $('.selected-piece').contents()
   if ($("#"+selectedCell).children().length > 0) {
-    $('.overlay-msg').css("visibility", "visible")
-    $('.overlay-msg p').html("Please select an empty cell.") }
+    $('#overlay-msg').css({"visibility":"visible", 'position':'absolute', 'z-index': '100', 'position':'absolute'})
+    $('#overlay-msg p').html("Illegal Move: Please select an empty cell.") }
     else {
       placed.detach();
       $('#' + selectedCell).append(placed);
@@ -192,14 +198,14 @@ $('.cell').click(function(){
   })
 
   $("#dismissed").click(function(){
-    $(".overlay-msg").css('visibility', 'hidden')
+    $(".overlay-msg").alert()
   })
 
   $('#start-over').click(function () {
-    $('.cell').remove();
-    $('.game-piece').remove();
-    $('h2').remove();
-    $(".game-over").css('visibility', 'hidden')
+    $('#instructions').empty()
+    $('td').remove()
+    $('.selected-display').empty()
+    $('.cell').empty()
     gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     selectedPiece = '';
     selectedCell = 0;
@@ -214,11 +220,10 @@ $('.cell').click(function(){
   })
 
   $('#play-again').click(function () {
-    $('h2').remove();
-    $('.cell').remove();
-    $('.game-piece').remove();
-    $(".game-over").css('visibility', 'hidden')
-
+    $('#instructions').empty()
+    $('td').remove()
+    $('.selected-display').empty()
+    $('.cell').empty()
     gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     selectedPiece = '';
     selectedCell = 0;

@@ -1,0 +1,20 @@
+{
+    "batch": "7",
+    "githubLogin": "EstherLow",
+    "project1": {
+      "repoName": "project-1",
+      "deployedUrl": "https://estherlow.github.io/",
+      "previewImage": ""
+    },
+    "project2": {
+      "repoName": "project-2",
+      "deployedUrl": "https://homeworkmanager.herokuapp.com/",
+      "previewImage": ""
+    },
+    "project3": {
+      "repoName": "project-3",
+      "deployedUrl": "https://fleastarter.herokuapp.com/",
+      "previewImage": "",
+      "collaborators": ["sharan", "danial"]
+    }
+  }
