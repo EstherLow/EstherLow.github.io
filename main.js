@@ -75,6 +75,7 @@ function playTurn () {
     $(".instructions").replaceWith("<h4>Player 1, please select token for Player 2.</h4>")
   }
 }
+
 function isObject (arr) {
   return typeof arr === 'object'
 }
@@ -151,11 +152,9 @@ loadGamePieces()
 $('.game-piece').click(function () {
   selectedPiece = $(this).attr('id')
   var selected = $('#' + selectedPiece).contents();
-  // console.log(selectedPiece);
-  // console.log(selected);
   if ($('.selected-piece').children().length !== 0) {
-    $('.overlay-msg p').html("Illegal Move: Please place selected token.");
-    $('.overlay-msg').css({"visibility":"visible", 'z-index': '100', 'margin-top': '100px', 'position':'relative'});
+    $('#overlay-msg').prepend('<p class="alert alert-danger alert-dismissable" role="alert">Illegal Move: Please place selected token.<br/><button class="btn btn-danger" id="dismissed" data-dismiss="alert">Ok</button></p>');
+    $('#overlay-msg').css({"visibility":"visible", 'z-index': '100', 'margin-top': '100px', 'position':'absolute'})
   } else {
   selected.detach();
   $('.selected-piece').append(selected)
@@ -169,7 +168,8 @@ $('.cell').click(function(){
   // checks if user has selected a token
   selectedCell = $(this).attr('id');
   if ($('.selected-piece').children().length === 0) {
-    $('#overlay-msg p').html("Illegal Move: Please select a token first.");
+    //alert illegal move
+    $('#overlay-msg').prepend('<p class="alert alert-danger alert-dismissable" role="alert">Illegal Move: Please select a token first.<br/><button class="btn btn-danger" id="dismissed" data-dismiss="alert">Ok</button></p>');
     $('#overlay-msg').css({"visibility":"visible", 'z-index': '100', 'margin-top': '100px', 'position':'absolute'});
     return;
   }
@@ -177,8 +177,10 @@ $('.cell').click(function(){
   // checks if cell user clicks on is empty
   var placed = $('.selected-piece').contents()
   if ($("#"+selectedCell).children().length > 0) {
-    $('#overlay-msg').css({"visibility":"visible", 'position':'absolute', 'z-index': '100', 'position':'absolute'})
-    $('#overlay-msg p').html("Illegal Move: Please select an empty cell.") }
+    //alert illegal move
+    $('#overlay-msg').prepend('<p class="alert alert-danger alert-dismissable" role="alert">Illegal Move: Please select an empty cell.<br/><button class="btn btn-danger" id="dismissed" data-dismiss="alert">Ok</button></p>');
+    $('#overlay-msg').css({"visibility":"visible", 'z-index': '100', 'margin-top': '100px', 'position':'absolute'})
+     }
     else {
       placed.detach();
       $('#' + selectedCell).append(placed);
@@ -198,12 +200,14 @@ $('.cell').click(function(){
   })
 
   $("#dismissed").click(function(){
-    $(".overlay-msg").alert()
+    console.log('button clicked');
+    $("#overlay-msg p").alert('close')
+
   })
 
   $('#start-over').click(function () {
     $('#instructions').empty()
-    $('td').remove()
+    $('#game-pieces').empty()
     $('.selected-display').empty()
     $('.cell').empty()
     gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
@@ -221,7 +225,7 @@ $('.cell').click(function(){
 
   $('#play-again').click(function () {
     $('#instructions').empty()
-    $('td').remove()
+    $('#game-pieces').empty()
     $('.selected-display').empty()
     $('.cell').empty()
     gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
