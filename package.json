@@ -1,0 +1,19 @@
+{
+  "name": "ani-quarto",
+  "version": "1.0.0",
+  "description": "A modified version of the award winning game Quarto",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EstherLow/wdiproject1-EstherLow.git"
+  },
+  "author": "Esther Low",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EstherLow/wdiproject1-EstherLow/issues"
+  },
+  "homepage": "https://github.com/EstherLow/wdiproject1-EstherLow#readme"
+}
