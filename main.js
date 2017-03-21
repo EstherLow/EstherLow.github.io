@@ -48,8 +48,8 @@ var diagonal = [];
 function loadGamePieces () {
   $('#instructions').prepend('<div class="instructions"> <h5><strong>To begin:</strong> Player 2, please select token for Player 1</h5></div>');
   for (var i = 0; i < arrayOfGamePieces.length; i++) {
-      $('#game-pieces').append("<div class='game-piece col-sm-4' id='" + arrayOfGamePieces[i].keyid + "' style='margin-bottom: 10px'></div>")
-      $("#" + arrayOfGamePieces[i].keyid).prepend("<img src ='" + arrayOfGamePieces[i].url + "' id='" + arrayOfGamePieces[i].keyid + "' style='width: 50px; box-shadow: 5px 5px 3px grey; border-radius:" + arrayOfGamePieces[i].borderradius + "; z-index: 50'>")
+      $('#game-pieces').append("<div class='game-piece' id='" + arrayOfGamePieces[i].keyid + "'></div>")
+      $("#" + arrayOfGamePieces[i].keyid).prepend("<img src ='" + arrayOfGamePieces[i].url + "' id='" + arrayOfGamePieces[i].keyid + "' class='img-fluid'>")
   }
 }
 
@@ -57,8 +57,8 @@ function loadGamePieces () {
 
 function loadGameBoard() {
   for (var x = 0; x <gameBoard.length; x++) {
-    $("#game-board").append("<div class='cell d-inline-block' id='" + gameBoard[x] + "'></div>");
-    $("#" + gameBoard[x]).css({'width': '80px', 'position': 'relative', 'height': '80px', 'border': '2px solid grey', 'border-radius': '50%', 'box-sizing': 'border-box'})
+    $("#game-board").append("<div class='cell' id='" + gameBoard[x] + "'></div>");
+    $("#" + gameBoard[x]).css({'width': '60px', 'position': 'relative', 'height': '60px', 'border': '2px solid grey', 'border-radius': '50%', 'box-sizing': 'border-box'})
   }
   $('#start-over').css('visibility', 'visible');
 }
@@ -158,8 +158,8 @@ $('.game-piece').click(function () {
   } else {
   selected.detach();
   $('.selected-piece').append(selected)
-  $('.selected-piece').css({'width': '50px', 'margin-left': '20px'})
-  $(".instructions h2").detach();
+  $('.selected-piece').css({'width': '40px', 'margin-left': '10px', 'align-self': 'baseline'})
+  $("#instructions h2").detach();
 }
 })
 
