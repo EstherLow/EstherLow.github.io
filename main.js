@@ -46,7 +46,7 @@ var column = [];
 var diagonal = [];
 
 function loadGamePieces () {
-  $('#instructions').prepend('<div class="instructions"> <h5><strong>To begin:</strong> Player 2, please select token for Player 1</h5></div>');
+  $('#instructions').prepend('<div class="instructions"><h5><strong>To begin:</strong> Player 2, please select token for Player 1</h5></div>');
   for (var i = 0; i < arrayOfGamePieces.length; i++) {
       $('#game-pieces').append("<div class='game-piece' id='" + arrayOfGamePieces[i].keyid + "'></div>")
       $("#" + arrayOfGamePieces[i].keyid).prepend("<img src ='" + arrayOfGamePieces[i].url + "' id='" + arrayOfGamePieces[i].keyid + "' class='img-fluid'>")
@@ -69,10 +69,10 @@ function playTurn () {
   if (isGameOver === true) { return false; }
 
   else if (activePlayer === 1) {
-    $(".instructions").replaceWith("<h4>Player 2, please select token for Player 1.</h4>")
+    $("#instructions h5").replaceWith("<h5>Player 2, please select token for Player 1.</h5>")
   }
   else if (activePlayer === 2) {
-    $(".instructions").replaceWith("<h4>Player 1, please select token for Player 2.</h4>")
+    $("#instructions h5").replaceWith("<h5>Player 1, please select token for Player 2.</h5>")
   }
 }
 
@@ -158,7 +158,7 @@ $('.game-piece').click(function () {
   } else {
   selected.detach();
   $('.selected-piece').append(selected)
-  $('.selected-piece').css({'width': '40px', 'margin-left': '10px', 'align-self': 'baseline'})
+  $('.selected-piece').css({'margin-left': '5px', 'align-self': 'baseline'})
   $("#instructions h2").detach();
 }
 })
