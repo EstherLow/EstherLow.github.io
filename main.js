@@ -1,6 +1,5 @@
 /* global $ */
 
-
 // constructor for gamepiece
 function Gamepiece(keyid, border, ears, shape, animal, url, borderradius) {
   this.keyid = keyid;
@@ -46,7 +45,7 @@ var column = [];
 var diagonal = [];
 
 function loadGamePieces () {
-  $('#instructions').prepend('<div class="instructions"><h5><strong>To begin:</strong> Player 2, please select token for Player 1</h5></div>');
+  $('#instructions').prepend('<div class="instructions"><h6><strong>To begin:</strong><br/> Player 2, please select token for Player 1</h6></div>');
   for (var i = 0; i < arrayOfGamePieces.length; i++) {
       $('#game-pieces').append("<div class='game-piece' id='" + arrayOfGamePieces[i].keyid + "'></div>")
       $("#" + arrayOfGamePieces[i].keyid).prepend("<img src ='" + arrayOfGamePieces[i].url + "' id='" + arrayOfGamePieces[i].keyid + "'>")
@@ -91,8 +90,9 @@ function compareCells ([c1, c2, c3, c4]) {
       isGameOver = true;
       console.log(isGameOver);
       console.log('Player ' + activePlayer + ' won.');
-      $('#game-over').prepend('<h3>Game Over!Winner is Player ' + activePlayer + '</h3>');
-      $('#game-over').css({"visibility":'visible'})
+      $('#game-over').prepend('<h4>Game Over!Winner is Player ' + activePlayer + '</h4>');
+      $('#game-over').addClass('alert alert-danger')
+      $('#game-over').css({"visibility":'visible', 'z-index': '200', 'margin-top': '100px', 'position':'absolute'})
     }
     if (gameBoard.every(isObject) === true) {
       winner = 3;
@@ -140,15 +140,14 @@ function mapCells() {
   }
 }
 
-loadGameBoard();
-loadGamePieces()
 
-// $('#show-instructions').click(function (){
-//   $('#game-info').toggle();
-//   })
+$(document).ready(function () {
+  loadGameBoard()
+  loadGamePieces()
+  $('#rules').modal('show')
 
 
-$('.game-piece').click(function () {
+$('.game-piece').on('click', function () {
   selectedPiece = $(this).attr('id')
   var selected = $('#' + selectedPiece).contents();
   if ($('.selected-piece').children().length !== 0) {
@@ -156,12 +155,13 @@ $('.game-piece').click(function () {
     $('#overlay-msg').css({"visibility":"visible", 'z-index': '100', 'margin-top': '100px', 'position':'absolute'})
   } else {
   selected.detach();
+  $('#selected-display').css({'visibility': 'visible'})
   $('.selected-piece').append(selected)
   $("#instructions h2").detach();
 }
 })
 
-$('.cell').click(function(){
+$('.cell').on('click',function(){
 
   // checks if user has selected a token
   selectedCell = $(this).attr('id');
@@ -182,6 +182,7 @@ $('.cell').click(function(){
     else {
       placed.detach();
       $('#' + selectedCell).append(placed)
+      $('#selected-display').css({'visibility': 'hidden'})
     }
 
     gameBoard[selectedCell] = window[selectedPiece];
@@ -203,11 +204,11 @@ $('.cell').click(function(){
 
   })
 
-  $('#start-over').click(function () {
+  $('#start-over').on('click', function () {
     $('#instructions').empty()
     $('#game-pieces').empty()
-    $('#selected-display').empty()
-    $('.cell').empty()
+    $('.selected-piece').empty()
+    $('#game-board').empty()
     gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     selectedPiece = '';
     selectedCell = 0;
@@ -219,13 +220,15 @@ $('.cell').click(function(){
     diagonal = [];
     loadGameBoard();
     loadGamePieces();
+    location.reload()
   })
 
-  $('#play-again').click(function () {
+  $('#play-again').on('click', function () {
     $('#instructions').empty()
     $('#game-pieces').empty()
-    $('#selected-display').empty()
-    $('.cell').empty()
+    $('.selected-piece').empty()
+    $('#game-board').empty()
+    $('#game-over').empty()
     gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     selectedPiece = '';
     selectedCell = 0;
@@ -235,6 +238,6 @@ $('.cell').click(function(){
     row = [];
     column = [];
     diagonal = [];
-    loadGamePieces ()
-    loadGameBoard ()
+    location.reload()
   })
+})

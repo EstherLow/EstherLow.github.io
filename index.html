@@ -8,6 +8,46 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 </head>
 <body>
+  <div class="modal fade" id="about-ani-quarto" tabindex="-1" role="dialog" aria-labelledby="about" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="about">About Ani-Quarto</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>This game is a modified version of the award-winning board game, Quarto, invented by Swiss mathematician, Blaise Müller.</p>
+          <p>You can read Quarto's <a target="_blank" href="https://en.wikipedia.org/wiki/Quarto_(board_game)">wiki</a> to learn more.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="rules" tabindex="-1" role="dialog" aria-labelledby="rules" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="rules">Welcome to Ani-Quarto!</h2>
+        </div>
+        <div class="modal-body">
+          <h3>How to play:</h3>
+          <p>Two players will take turns to place a token chosen by the opponent on the board. The first player who completes a horizontal, vertical or diagonal row of four pieces, all of which has at least one common attribute, wins.</p>
+          <p>There are altogether 16 game pieces, each piece has four attributes:</p>
+          <ul>
+            <li>shape: round or square</li>
+            <li>ears: yes or no</li>
+            <li>borders: yes or no</li>
+            <li>animal type: rabbit or panda</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Start Playing</button>
+      </div>
+      </div>
+    </div>
+  </div>
+
   <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -16,29 +56,27 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">About Ani-Quarto</a>
+        <a class="nav-link" data-toggle="modal" data-target="#about-ani-quarto">About Ani-Quarto</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="#">How to Play</a>
+        <a class="nav-link" data-toggle="modal" data-target="#rules">How to Play</a>
       </li>
     </ul>
   </div>
 </nav>
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-8 col-sm-9" id='instructions'></div>
+  <div class="row" style="background-color: #dff0d8">
+    <div class="col-md-10" id='instructions'></div>
+    <div class="col-md-1"></div>
   </div>
-  <div class="row">
+  <div class="row" style="background-color: #ffd27f">
     <div class="d-inline-flex flex-wrap" id='game-pieces'></div>
   </div>
   <div class="row">
-
-    <div class="col-xs-4 col-sm-3">
-        <div id='selected-display'>
+    <div class="col-xs-12 col-md-12">
+        <div id='selected-display' class="alert alert-info" style="visibility: hidden">
           <h5>The selected token is:
-            <span class='selected-piece'>
-
-            </span>
+            <span class='selected-piece'></span>
           </h5>
         </div>
     </div>
@@ -46,16 +84,13 @@
   <div class="row">
     <div id="game-board">
       <div id='overlay-msg' style='display: none, position: absolute'></div>
+      <div id='game-over' style='display: none, position: absolute'></div>
     </div>
-    </div>
+
   </div>
   <div class="row" id="footer">
-      <div class='col-xs-6' id='game-over' >
-        <button class='btn btn-primary' id='play-again'>Play again!</button>
-      </div>
-      <div class='col-xs-6' id='restart'>
-        <button class='btn btn-success' id='start-over' class="invisible">Start Over</button>
-      </div>
+    <div class="mx-0" style="width: 100%">
+      <button class='btn btn-success' id='play-again'>Restart</button></div>
   </div>
 </div>
 <!-- <div class="container">

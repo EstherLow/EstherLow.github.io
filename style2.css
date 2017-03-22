@@ -32,11 +32,15 @@
 
 /* generic */
 
+#instructions {
+  color: #3c763d;
+  margin-left: 20px;
+  height: 60px;
+  padding-top: 10px
+}
+
 #game-pieces {
-  background-color: #af7fbd;
-  padding-top: 5px;
-  padding-bottom: 15px;
-  justify-content: space-between;
+  background-color: #ffd27f;
   width: 100%;
 }
 
@@ -49,7 +53,6 @@
   flex-wrap: wrap;
   flex-direction: row;
   position: relative;
-  margin-top: 20px;
   padding: 0;
 }
 
@@ -58,11 +61,17 @@
   border: 2px solid grey;
   border-radius: 50%;
   box-sizing: border-box;
-  background-color: #9c71a8
+  background-color: #ebbf6f
 }
 
 #selected-display {
+  margin-top: 20px;
   height: 80px;
+}
+
+#selected-display img {
+  max-height: 65px;
+  width: auto;
 }
 
 #footer {
@@ -73,9 +82,13 @@
 /* for small size screens */
 
 @media (max-width: 576px) {
+  #game-pieces{
+    justify-content: space-between;
+  }
+
   .game-piece {
     width: 40px;
-    height: 40px;
+    height: auto;
     margin-right: 2px;
   }
 
@@ -104,8 +117,14 @@
 
 /* for large size screen */
 @media (min-width: 577px) {
+  #game-pieces {
+    width: 560px;
+    margin-left: calc((100% - 560px)/2)
+  }
+
   .game-piece {
     align-self: baseline;
+    margin-right: 20px;
     width: 50px;
     height: auto
   }
