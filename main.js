@@ -49,7 +49,7 @@ function loadGamePieces () {
   $('#instructions').prepend('<div class="instructions"><h5><strong>To begin:</strong> Player 2, please select token for Player 1</h5></div>');
   for (var i = 0; i < arrayOfGamePieces.length; i++) {
       $('#game-pieces').append("<div class='game-piece' id='" + arrayOfGamePieces[i].keyid + "'></div>")
-      $("#" + arrayOfGamePieces[i].keyid).prepend("<img src ='" + arrayOfGamePieces[i].url + "' id='" + arrayOfGamePieces[i].keyid + "' class='img-fluid'>")
+      $("#" + arrayOfGamePieces[i].keyid).prepend("<img src ='" + arrayOfGamePieces[i].url + "' id='" + arrayOfGamePieces[i].keyid + "'>")
   }
 }
 
@@ -58,7 +58,6 @@ function loadGamePieces () {
 function loadGameBoard() {
   for (var x = 0; x <gameBoard.length; x++) {
     $("#game-board").append("<div class='cell' id='" + gameBoard[x] + "'></div>");
-    $("#" + gameBoard[x]).css({'width': '60px', 'position': 'relative', 'height': '60px', 'border': '2px solid grey', 'border-radius': '50%', 'box-sizing': 'border-box'})
   }
   $('#start-over').css('visibility', 'visible');
 }
@@ -158,7 +157,6 @@ $('.game-piece').click(function () {
   } else {
   selected.detach();
   $('.selected-piece').append(selected)
-  $('.selected-piece').css({'margin-left': '5px', 'align-self': 'baseline'})
   $("#instructions h2").detach();
 }
 })
@@ -183,7 +181,7 @@ $('.cell').click(function(){
      }
     else {
       placed.detach();
-      $('#' + selectedCell).append(placed);
+      $('#' + selectedCell).append(placed)
     }
 
     gameBoard[selectedCell] = window[selectedPiece];
@@ -208,7 +206,7 @@ $('.cell').click(function(){
   $('#start-over').click(function () {
     $('#instructions').empty()
     $('#game-pieces').empty()
-    $('.selected-display').empty()
+    $('#selected-display').empty()
     $('.cell').empty()
     gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     selectedPiece = '';
@@ -226,7 +224,7 @@ $('.cell').click(function(){
   $('#play-again').click(function () {
     $('#instructions').empty()
     $('#game-pieces').empty()
-    $('.selected-display').empty()
+    $('#selected-display').empty()
     $('.cell').empty()
     gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
     selectedPiece = '';

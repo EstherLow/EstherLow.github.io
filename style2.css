@@ -29,60 +29,112 @@
   margin-left: 0px;
 }
 */
+
+/* generic */
+
 #game-pieces {
-  background-color: #A9A9A9;
+  background-color: #af7fbd;
   padding-top: 5px;
   padding-bottom: 15px;
   justify-content: space-between;
   width: 100%;
 }
 
-@media (max-width: 576px) {
-  .game-piece {
-    align-self: baseline;
-    max-width: 35px;
-    min-width: 35px;
-    min-height: 35px;
-    max-height: 35px;
-    margin-right: 2px;
-  }
+.game-piece {
+  align-self: baseline;
 }
-
-@media (min-width: 577px) {
-  .game-piece {
-    align-self: baseline;
-    min-width: 50px;
-    height: auto
-  }
-}
-
-
-/*.selected-display {
-  float: left;
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  width: 320px;
-  height: 100px;
-  margin-left: calc((100% - 320px)/2)
-}*/
 
 #game-board {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  width: 240px;
-  height: 240px
   position: relative;
   margin-top: 20px;
-  margin-left: calc((100% - 240px)/2);
   padding: 0;
+}
+
+.cell {
+  position: relative;
+  border: 2px solid grey;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background-color: #9c71a8
+}
+
+#selected-display {
+  height: 80px;
 }
 
 #footer {
   margin-top: 10px;
   margin-left: calc((100% - 240px)/2);
 }
+
+/* for small size screens */
+
+@media (max-width: 576px) {
+  .game-piece {
+    width: 40px;
+    height: 40px;
+    margin-right: 2px;
+  }
+
+  .game-piece img {
+    width: 40px;
+    height: auto;
+  }
+
+  .cell {
+    width: 70px;
+    height: 70px;
+    padding: 10px 10px 10px 10px
+  }
+  .cell img {
+    height: 50px;
+    width: auto;
+    align-self: baseline;
+  }
+
+  #game-board {
+    width: 280px;
+    height: 280px;
+    margin-left: calc((100% - 280px)/2);
+  }
+}
+
+/* for large size screen */
+@media (min-width: 577px) {
+  .game-piece {
+    align-self: baseline;
+    width: 50px;
+    height: auto
+  }
+
+  .game-piece img {
+    height: auto;
+    width: 50px
+  }
+
+  .cell {
+    width: 80px;
+    height: 80px;
+    padding: 10px 10px 10px 10px
+  }
+
+  .cell img {
+    height: 55px;
+    width: auto;
+    align-self: baseline;
+  }
+
+  #game-board {
+    width: 320px;
+    height: 320px;
+    margin-left: calc((100% - 320px)/2);
+  }
+}
+
+
 
 /*.overlay-msg {
   position: fixed;

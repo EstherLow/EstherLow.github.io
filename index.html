@@ -26,15 +26,15 @@
 </nav>
 <div class="container-fluid">
   <div class="row">
-    <div class="d-inline-flex flex-wrap" id='game-pieces'>
-    </div>
+    <div class="col-xs-8 col-sm-9" id='instructions'></div>
   </div>
   <div class="row">
-    <div class="col-xs-8 col-sm-9" id='instructions'>
+    <div class="d-inline-flex flex-wrap" id='game-pieces'></div>
+  </div>
+  <div class="row">
 
-    </div>
     <div class="col-xs-4 col-sm-3">
-        <div class='selected-display'>
+        <div id='selected-display'>
           <h5>The selected token is:
             <span class='selected-piece'>
 
@@ -51,7 +51,7 @@
   </div>
   <div class="row" id="footer">
       <div class='col-xs-6' id='game-over' >
-        <button class='btn btn-primary' id='play-again' style="margin-right: 10px">Play again!</button>
+        <button class='btn btn-primary' id='play-again'>Play again!</button>
       </div>
       <div class='col-xs-6' id='restart'>
         <button class='btn btn-success' id='start-over' class="invisible">Start Over</button>
