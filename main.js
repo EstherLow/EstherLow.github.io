@@ -45,7 +45,7 @@ var column = [];
 var diagonal = [];
 
 function loadGamePieces () {
-  $('#instructions').prepend('<div class="instructions"><h6><strong>To begin:</strong><br/> Player 2, please select token for Player 1</h6></div>');
+  $('#instructions').prepend('<div class="instructions"><h6><strong>To begin:</strong>Player 2, please select token for Player 1</h6></div>');
   for (var i = 0; i < arrayOfGamePieces.length; i++) {
       $('#game-pieces').append("<div class='game-piece' id='" + arrayOfGamePieces[i].keyid + "'></div>")
       $("#" + arrayOfGamePieces[i].keyid).prepend("<img src ='" + arrayOfGamePieces[i].url + "' id='" + arrayOfGamePieces[i].keyid + "'>")
